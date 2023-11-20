@@ -11,5 +11,10 @@
 .custom-header {
   background-color: hsl(171, 100%, 41%);
   color: #ffffff;
+}
+
+  .header-link {
+  display: inline-block;
+  margin-right: 1rem;
   padding: 1rem;
 }
