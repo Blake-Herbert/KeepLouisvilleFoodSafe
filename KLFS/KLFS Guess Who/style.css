@@ -45,7 +45,7 @@
       display: none; /* Hide box elements on smaller screens */
       flex-direction: column;
       position: absolute;
-      top: 60px; /* Adjust as needed */
+      top: 3rem;
       left: 0;
       background-color: hsl(171, 100%, 41%);
       width: 100%;
