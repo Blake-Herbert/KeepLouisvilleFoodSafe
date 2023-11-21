@@ -52,7 +52,7 @@
   }
 
   .header-links.show {
-      display: flex;
+      display: flex; /* Show on click */
   }
 
   .header-link {
