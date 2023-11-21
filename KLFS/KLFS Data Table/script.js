@@ -8,14 +8,19 @@ function formatDate(timestamp) {
     return "N/A";
 }
 
-// Function to fetch and populate the table
-function populateTable() {
+// Function to fetch and populate the sorted table
+function populateSortedTable() {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
+            const sortedFeatures = data.features.sort((a, b) => {
+                // Sort by InspectionDate in descending order
+                return new Date(b.attributes.InspectionDate) - new Date(a.attributes.InspectionDate);
+            });
+
             const tableBody = document.querySelector("#dataTable tbody");
 
-            data.features.forEach(feature => {
+            sortedFeatures.forEach(feature => {
                 const attributes = feature.attributes;
                 const inspectionDate = formatDate(attributes.InspectionDate) || "N/A";
                 const premiseName = attributes.premise_name || "N/A";
@@ -37,5 +42,5 @@ function populateTable() {
         .catch(error => console.error("Error fetching data: " + error));
 }
 
-// Call the function to populate the table
-populateTable();
+// Call the function to populate the sorted table
+populateSortedTable();
