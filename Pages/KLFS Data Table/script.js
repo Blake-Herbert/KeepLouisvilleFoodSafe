@@ -16,6 +16,8 @@ function populateSortedTable() {
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
+            
+        console.log(data.features);
             // Sort features by InspectionDate in descending order
             const sortedFeatures = data.features.sort((a, b) => {
                 return new Date(b.attributes.InspectionDate) - new Date(a.attributes.InspectionDate);
@@ -28,6 +30,7 @@ function populateSortedTable() {
             sortedFeatures.forEach(feature => {
                 const attributes = feature.attributes;
                 const inspectionDate = formatDate(attributes.InspectionDate) || "N/A";
+                console.log({att:feature.attributes.InspectionDate,inspectionDate});
                 const premiseName = attributes.premise_name || "N/A";
                 const violationComments = attributes.Insp_Viol_Comments || "N/A";
                 const premise_street = attributes.premise_adr1_street || "N/A";
