@@ -102,8 +102,7 @@ function fetchData() {
             fetchData();
           }, 100);
         } else {
-          clickedOption.style.backgroundColor = "red"; // Change color to red for incorrect answer.
-          alert("Incorrect answer. Try again.");
+          clickedOption.style.backgroundColor = "red"; // Change color to red for incorrect answer.;
         }
       }
     })
