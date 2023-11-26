@@ -4,10 +4,17 @@ const apiUrl = "https://services1.arcgis.com/79kfd2K6fskCAkyg/arcgis/rest/servic
 // Function to format a timestamp into a human-readable date.
 function formatDate(timestamp) {
   if (timestamp) {
-      const date = new Date(timestamp);
-      return date.toDateString();
+    const date = new Date(timestamp);
+    return date.toDateString();
   }
   return "N/A";
+}
+
+// Function to reset the color of the options to their original state.
+function resetOptionColors() {
+  option1.style.backgroundColor = "";
+  option2.style.backgroundColor = "";
+  option3.style.backgroundColor = "";
 }
 
 // Fetch data from the API and process it.
@@ -59,6 +66,9 @@ function fetchData() {
       const option2 = document.getElementById("option2");
       const option3 = document.getElementById("option3");
 
+      // Reset the color of the options.
+      resetOptionColors();
+
       // Populate the HTML elements with the question and answer options.
       promptDiv.textContent = "\"" + correctAnswer.Insp_Viol_Comments + "\" - " + inspectionDate;
       option1.textContent = answers[0].premise_name + " on " + answers[0].premise_adr1_street;
@@ -83,6 +93,14 @@ function fetchData() {
         if (isCorrect) {
           clickedOption.style.backgroundColor = "green"; // Change color to green for correct answer.
           alert("Correct answer!");
+
+          // After a 2-second delay, move on to the next question.
+          setTimeout(() => {
+            // Reset the color of the options.
+            resetOptionColors();
+            // Call the fetchData function to get new data and update the quiz.
+            fetchData();
+          }, 100);
         } else {
           clickedOption.style.backgroundColor = "red"; // Change color to red for incorrect answer.
           alert("Incorrect answer. Try again.");
