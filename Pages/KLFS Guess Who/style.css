@@ -47,6 +47,8 @@
 
 /* Media query for responsive design - screens with a width up to 768px */
 @media only screen and (max-width: 768px) {
+  
+
   /* Adjust styles for header links on smaller screens */
   .header-links {
     display: none; /* Hide box elements on smaller screens */

@@ -2,7 +2,7 @@
 const apiUrl = "https://services1.arcgis.com/79kfd2K6fskCAkyg/arcgis/rest/services/Louisville_Metro_KY_Inspection_Violations_of_Failed_Restaurants/FeatureServer/0/query?where=1%3D1&outFields=InspectionDate,premise_name,premise_adr1_street,Insp_Viol_Comments&outSR=4326&f=json";
 
 // Function to format a timestamp into a human-readable date.
-function formatDate(timestamp) {
+function formatDateToHumanReadable(timestamp) {
   if (timestamp) {
     const date = new Date(timestamp);
     return date.toDateString();
@@ -44,7 +44,7 @@ function fetchData() {
       incorrectAnswer2.isCorrect = false;
 
       // Format the inspection date for the correct answer (or "N/A" if missing).
-      const inspectionDate = formatDate(correctAnswer.InspectionDate) || "N/A";
+      const inspectionDate = formatDateToHumanReadable(correctAnswer.InspectionDate) || "N/A";
 
       // Create an array to hold the answer options.
       const answers = [correctAnswer, incorrectAnswer1, incorrectAnswer2];
