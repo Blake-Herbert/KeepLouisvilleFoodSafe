@@ -49,7 +49,12 @@ function fetchData() {
 
       // Select a correct answer and two incorrect answers randomly.
       const correctAnswer = features[Math.floor(Math.random() * features.length)].attributes;
+      const incorrectAnswer1 = features[Math.floor(Math.random() * features.length)].attributes;
+      const incorrectAnswer2 = features[Math.floor(Math.random() * features.length)].attributes;
 
+
+
+      
       // Check if correctAnswer.Insp_Viol_Comments is a case-insensitive match with "null".
       if (correctAnswer.Insp_Viol_Comments.toLowerCase() === "null") {
         // If it matches, call the fetchData function again to get a new set of data.
@@ -57,9 +62,23 @@ function fetchData() {
         return;
       }
 
-      const incorrectAnswer1 = features[Math.floor(Math.random() * features.length)].attributes;
-      const incorrectAnswer2 = features[Math.floor(Math.random() * features.length)].attributes;
+      // Check if correctAnswer, incorrectAnswer1, or incorrectAnswer2 have the same premises
+      if (
+        (correctAnswer.premise_name === incorrectAnswer1.premise_name &&
+          correctAnswer.premise_adr1_street === incorrectAnswer1.premise_adr1_street) ||
+        (correctAnswer.premise_name === incorrectAnswer2.premise_name &&
+          correctAnswer.premise_adr1_street === incorrectAnswer2.premise_adr1_street) ||
+        (incorrectAnswer1.premise_name === incorrectAnswer2.premise_name &&
+          incorrectAnswer1.premise_adr1_street === incorrectAnswer2.premise_adr1_street)
+      ) {
+        // If they have the same premises, call fetchData again to get a new set of data.
+        fetchData();
+        return;
+      }
 
+
+
+      
       // Set a boolean attribute 'isCorrect' for the correct and incorrect answers.
       correctAnswer.isCorrect = true;
       incorrectAnswer1.isCorrect = false;
