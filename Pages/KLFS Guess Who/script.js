@@ -114,7 +114,7 @@ function fetchData() {
         // Update the color of the clicked option based on correctness.
         if (isCorrect) {
           clickedOption.style.backgroundColor = "green"; // Change color to green for correct answer.
-          alert("Correct answer!");
+          //alert("Correct answer!");
 
           // After a 2-second delay, move on to the next question.
           setTimeout(() => {
@@ -122,7 +122,7 @@ function fetchData() {
             resetOptionColors();
             // Call the fetchData function to get new data and update the quiz.
             fetchData();
-          }, 100);
+          }, 750);
         } else {
           clickedOption.style.backgroundColor = "red"; // Change color to red for incorrect answer.;
         }
