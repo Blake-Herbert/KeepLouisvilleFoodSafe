@@ -1,11 +1,8 @@
-/* Define styles for the custom header */
 html {
-
   background-color: rgb(247, 235, 213);
 }
 
-
-
+/* Define styles for the custom header */
 .custom-header {
   background-color: rgb(159, 95, 51);
   color: #ffffff;
