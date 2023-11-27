@@ -7,7 +7,7 @@ return `${year}-${month}-${day}`;
 }
 
 // Get the apiURL to only include dates from the past year
-function getPastYearDateRangeQuery() {
+function constructApiUrl() {
 //Get current date and date from one year ago
 const currentDate = new Date();
 const oneYearAgo = new Date();
@@ -36,7 +36,7 @@ function formatDateToHumanReadable(timestamp) {
 // Function to fetch and populate the sorted table
 function populateSortedTable() {
     // Fetch data from the specified API endpoint
-    fetch(getPastYearDateRangeQuery())
+    fetch(constructApiUrl())
         .then(response => response.json())
         .then(data => {
             

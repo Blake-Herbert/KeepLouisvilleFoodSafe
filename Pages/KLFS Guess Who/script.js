@@ -7,7 +7,7 @@ return `${year}-${month}-${day}`;
 }
 
 // Get the apiURL to only include dates from the past year
-function getPastYearDateRangeQuery() {
+function constructApiUrl() {
 //Get current date and date from one year ago
 const currentDate = new Date();
 const oneYearAgo = new Date();
@@ -41,7 +41,7 @@ function resetOptionColors() {
 
 // Fetch data from the API and process it.
 function fetchData() {
-  fetch(getPastYearDateRangeQuery())
+  fetch(constructApiUrl())
     .then(response => response.json())
     .then(data => {
       // Extract the features array from the API response.
