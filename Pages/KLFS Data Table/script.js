@@ -63,13 +63,11 @@ function populateSortedTable() {
                 const cell1 = row.insertCell(0);
                 const cell2 = row.insertCell(1);
                 const cell3 = row.insertCell(2);
-                const cell4 = row.insertCell(3);
 
                 // Populate cells with data
                 cell1.textContent = inspectionDate;
-                cell2.textContent = premiseName;
-                cell3.textContent = premise_street;
-                cell4.textContent = violationComments;
+                cell2.textContent = premiseName + " on " + premise_street;
+                cell3.textContent = violationComments;
             });
         })
         .catch(error => console.error("Error fetching data: " + error));
