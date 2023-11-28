@@ -35,8 +35,11 @@ function formatDateToHumanReadable(timestamp) {
 // Function to reset the color of the options to their original state.
 function resetOptionColors() {
   option1.style.backgroundColor = "";
+  option1.style.color = "";
   option2.style.backgroundColor = "";
+  option2.style.color = "";
   option3.style.backgroundColor = "";
+  option3.style.color = "";
 }
 
 // Fetch data from the API and process it.
@@ -132,9 +135,14 @@ function fetchData() {
 
         // Update the color of the clicked option based on correctness.
         if (isCorrect) {
+          option1.style.backgroundColor = "rgb(50, 25, 0)";
+          option1.style.color = "gray";
+          option2.style.backgroundColor = "rgb(50, 25, 0)";
+          option2.style.color = "gray";
+          option3.style.backgroundColor = "rgb(50, 25, 0)";
+          option3.style.color = "gray";
           clickedOption.style.backgroundColor = "green"; // Change color to green for correct answer.
-          //alert("Correct answer!");
-
+          clickedOption.style.color = ""; // Reset text color
           // After a 2-second delay, move on to the next question.
           setTimeout(() => {
             // Reset the color of the options.
@@ -143,7 +151,8 @@ function fetchData() {
             fetchData();
           }, 750);
         } else {
-          clickedOption.style.backgroundColor = "red"; // Change color to red for incorrect answer.;
+          clickedOption.style.backgroundColor = "rgb(50, 25, 0)"; // Change color for incorrect answer.;
+          clickedOption.style.color = "gray";
         }
       }
     })
