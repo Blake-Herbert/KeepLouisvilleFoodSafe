@@ -18,7 +18,7 @@ const formattedCurrentDate = formatDateToBeQueryable(currentDate);
 const formattedOneYearAgo = formatDateToBeQueryable(oneYearAgo);
 
 // Construct the query URL
-const apiUrl = `https://services1.arcgis.com/79kfd2K6fskCAkyg/arcgis/rest/services/Louisville_Metro_KY_Inspection_Violations_of_Failed_Restaurants/FeatureServer/0/query?where=InspectionDate%20%3E=%20%27${formattedOneYearAgo}%27%20AND%20InspectionDate%20%3C=%20%27${formattedCurrentDate}%27&outFields=InspectionDate,premise_name,premise_adr1_street,Insp_Viol_Comments&outSR=4326&f=json`;
+const apiUrl = `https://services1.arcgis.com/79kfd2K6fskCAkyg/arcgis/rest/services/Louisville_Metro_KY_Inspection_Violations_of_Failed_Restaurants/FeatureServer/0/query?where=critical_yn%20%3D%20'YES'%20AND%20InspectionDate%20%3E=%20'${formattedOneYearAgo}'%20AND%20InspectionDate%20%3C=%20'${formattedCurrentDate}'&outFields=InspectionDate,premise_name,premise_adr1_street,Insp_Viol_Comments&outSR=4326&f=json`;
 return apiUrl;
 }
 
